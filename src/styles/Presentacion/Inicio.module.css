@@ -1,0 +1,266 @@
+/* ======================== CONTENEDORES ===================== */
+.containerInit {
+    background: linear-gradient(45deg, var(--base), var(--base2), var(--base3));
+
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.contLogo {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    opacity: 1;
+    overflow: hidden;
+
+    transition: opacity 1s;
+}
+
+.spinner {
+    position: absolute;
+    width: 37.5rem;
+    height: 37.5rem;
+    border-radius: 50%;
+    border: 5px solid var(--principal);
+    border-left-color: transparent;
+    border-right-color: transparent;
+
+    filter: drop-shadow(0px 0px 0px var(--base));
+    animation: spinner 4s infinite;
+    animation-timing-function: linear;
+    z-index: 10;
+}
+
+.spinner::after {
+    content: '';
+    background-color: var(--principal);
+    width: 1.25rem;
+    height: 1.25rem;
+    position: absolute;
+    border-radius: inherit;
+    bottom: 4.6875rem;
+    left: 4.6875rem;
+}
+
+.spinner::before {
+    content: '';
+    background-color: var(--principal);
+    width: 1.25rem;
+    height: 1.25rem;
+    position: absolute;
+    border-radius: inherit;
+    top: 4.6875rem;
+    right: 4.6875rem;
+}
+
+.logo {
+    position: absolute;
+    width: 70%;
+    filter: drop-shadow(10px 2px 2px var(--principal));
+
+    animation: logo 1s infinite;
+    animation-direction: alternate;
+    animation-timing-function: linear;
+}
+
+
+.clearOpacity {
+    display: none;
+}
+
+.stopAnimation {
+    animation: none;
+}
+
+.init {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: .3125rem;
+}
+
+/* ======================== TEXTO ===================== */
+.containerText {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    gap: 2rem;
+}
+
+.text {
+    width: 100%;
+    color: var(--blanco);
+    text-align: center;
+    font-size: 3rem;
+    font-family: var(--tipografia);
+    pointer-events: none;
+    opacity: 0;
+}
+
+.t1 {
+    transition: opacity 1s 1s;
+}
+
+.t2 {
+    line-height: 4rem;
+    transition: opacity 1s 2s;
+}
+
+.t3 {
+    transition: opacity 1s 3s;
+}
+
+.t4 {
+    line-height: 4rem;
+    transition: opacity 1s 3s;
+}
+
+/* ======================== BOTON ===================== */
+.btn {
+    background-color: var(--principal);
+    font-size: 2.4rem;
+    width: 12.5rem;
+    border-radius: .3125rem;
+
+    font-family: var(--tipografia);
+    cursor: pointer;
+    transition: transform .5s, opacity 1s 4s;
+    opacity: 0;
+    padding: .3125rem;
+    pointer-events: none;
+}
+
+.link {
+    padding: .3125rem;
+    border-radius: .3125rem;
+    color: var(--negro);
+    transition: background-color .5s, color .5s;
+}
+
+.btn:hover {
+    transform: scale(1.1);
+}
+
+.btn:hover>.link {
+    background-color: var(--negro);
+    color: var(--blanco);
+}
+
+.btn:active {
+    transform: scale(1);
+}
+
+.revealOpacity {
+    opacity: 1;
+    pointer-events: inherit;
+}
+
+/* ======================== MEDIA QUERIES ===================== */
+@media screen and (height > 1000px) {
+    .containerText {
+        gap: 3rem;
+    }
+
+    .text {
+        font-size: 4rem;
+    }
+
+    .btn {
+        width: 18.75rem;
+        font-size: 3rem;
+    }
+}
+
+@media screen and (height < 500px) {
+    .containerText {
+        gap: 1rem;
+    }
+
+    .text {
+        font-size: 2rem;
+
+    }
+
+    .t1 {
+        line-height: 1rem;
+    }
+
+    .t1 {
+        line-height: 1rem;
+    }
+
+    .btn {
+        font-size: 1.5rem;
+    }
+
+    .spinner {
+        width: 25rem;
+        height: 25rem;
+    }
+
+    .spinner::after {
+        bottom: 2.8125rem;
+        left: 2.8125rem;
+    }
+
+    .spinner::before {
+        top: 2.8125rem;
+        right: 2.8125rem;
+    }
+    
+}
+
+@media screen and (width < 500px){
+    .logo{
+        width: 100%;
+    }
+    .spinner {
+        width: 20.625rem;
+        height: 20.625rem;
+    }
+    
+    .spinner::after {
+        bottom: 2.1875rem;
+        left: 2.1875rem;
+    }
+    
+    .spinner::before {
+        top: 2.1875rem;
+        right: 2.1875rem;
+    }
+}
+
+
+/* ========================== ANIMACIONES ========================== */
+@keyframes logo {
+    0% {
+        transform: scale(.9);
+
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes spinner {
+
+    0% {
+        rotate: 0deg;
+    }
+
+    100% {
+        rotate: 360deg;
+    }
+}

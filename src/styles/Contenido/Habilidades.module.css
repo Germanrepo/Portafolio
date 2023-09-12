@@ -1,0 +1,101 @@
+/* ====================== CONTENEDORES HABILIDADES ======================= */
+.containerSkills {
+    width: 90%;
+    height: 100vh;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    overflow: hidden;
+}
+
+.skills {
+    background-color: var(--baseElementos);
+    position: relative;
+    width: 100%;
+    height: 80%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
+    gap: .625rem;
+    padding: 1rem;
+
+    border-radius: .625rem;
+    /* border: 2px solid var(--principal); */
+    overflow: auto;
+}
+
+/* ====================== OBSERVADOR ======================= */
+.observer {
+    position: absolute;
+    bottom: 50%;
+}
+
+/* ====================== ICONOS ======================= */
+.icons {
+    background-color: var(--negro); 
+    /* background-color: #001;  */
+    width: 100%;
+    display: flex;
+    position: relative;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    justify-self: center;
+    
+    font-size: 4rem;
+    translate: 0 -900%;
+    border-radius: .625rem;
+    outline: 2px solid var(--baseElementos);
+    transition: translate 1s, box-shadow 1s 1s, transform .5s, outline 1s 1s;
+}
+
+.icons:hover{
+    z-index: 1;
+    transform: scale(1.03);
+}
+
+.icon1 {color: #f51;}
+.icon2 {color: #07e;}
+.icon3 {color: #ff0;}
+.icon4 {color: #1ff;}
+.icon5 {color: #0d1;}
+.icon6 {color: #fa0;}
+.icon7 {color: #90c;}
+
+/* ====================== CLASES ANIMACION ======================= */
+
+.tranlateElement1 { translate: 0 0; outline: 2px solid #f51;}
+
+.tranlateElement2 { translate: 0 0; outline: 2px solid #07e;}
+
+.tranlateElement3 { translate: 0 0; outline: 2px solid #ff0;}
+
+.tranlateElement4 { translate: 0 0; outline: 2px solid #1ff;}
+
+.tranlateElement5 { translate: 0 0; outline: 2px solid #0d1;}
+
+.tranlateElement6 { translate: 0 0; outline: 2px solid #fa0;}
+
+.tranlateElement7 { translate: 0 0; outline: 2px solid #90c;}
+
+/* ====================== MEDIA QUERIES ======================= */
+@media screen and (height < 550px) and (width < 920px) {
+
+    .containerSkills{
+        justify-content: flex-end;
+    }
+}
+
+@media screen and (width < 800px), (height < 500px){
+    .icons{
+        font-size: 3rem;
+    }
+}
+
+@media screen and (height > 1000px) {
+    .icons{
+        font-size: 4.5rem;
+    }
+}
+

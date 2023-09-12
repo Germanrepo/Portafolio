@@ -1,0 +1,15 @@
+@import url('./fuente.css');
+
+:root{
+    --principal: #0ff;
+    --secundario: #1af;
+    --blanco: #fff;
+    --hover: #0af4;
+    --baseElementos: #002;
+    --base: #013;
+    --base2: #014;
+    --base3: #015;
+    --negro: #000;
+
+    --tipografia: Belanosima;
+}

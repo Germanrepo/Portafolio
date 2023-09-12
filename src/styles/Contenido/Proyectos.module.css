@@ -1,0 +1,194 @@
+/* ====================== CONTENEDORES PROYECTOS ======================= */
+.containerProjects {
+    width: 90%;
+    height: 100vh;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    overflow: hidden;
+}
+
+.projects {
+    background-color: var(--baseElementos);
+    width: 100%;
+    height: 80%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+
+    border-radius: .625rem;
+    overflow: hidden;
+}
+
+/* ====================== CARRUSEL ======================= */
+.carousel {
+    position: relative;
+    width: 300%;
+    height: 80%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-self: flex-start;
+    margin-left: -100%;
+}
+
+.boxCard {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: .625rem;
+}
+
+.card {
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    border-radius: .3125rem;
+    overflow: hidden;
+}
+
+/* --------------------------- IMAGEN  ---------------------- */
+.contImg {
+    flex-basis: 70%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: .3125rem;
+    overflow: hidden;
+}
+
+.contImg img {
+    border-radius: .3125rem;
+}
+
+/* --------------------------- LINKS  ---------------------- */
+.contLinks {
+    flex-basis: 50%;
+    height: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.contLinks li {
+    width: 50%;
+    outline: 2px solid var(--principal);
+    border-radius: .3125rem;
+    overflow: hidden;
+    transition: background-color .5s, outline .5s;
+}
+
+.contLinks li a {
+    text-align: center;
+    font-size: 1rem;
+    padding: .625rem;
+    font-family: var(--tipografia);
+}
+.icon{
+    font-size: 2rem;
+    margin: 3px 0;
+}
+
+.contLinks li:hover {
+    background-color: var(--hover);
+    outline: 2px solid var(--baseElementos);
+}
+
+/* --------------------------- BOTONES  ---------------------- */
+.containerBtn {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+}
+
+.btn {
+    font-size: 3.5rem;
+    color: var(--blanco);
+    cursor: pointer;
+    border-radius: 50%;
+    outline: 2px solid var(--baseElementos);
+    transition: outline .5s;
+}
+
+.btn:hover{
+    outline: 2px solid var(--principal)
+}
+
+/* ====================== MEDIA QUERIES ======================= */
+@media screen and (width < 600px) {
+    .card {
+        flex-direction: column;
+    }
+    
+    .card div {
+        height: 70%;
+        width: 100%;
+    }
+    
+    .card ul {
+        width: 100%;
+    }
+
+    .contLinks li a{
+        font-size: .625rem;
+        padding: 0;
+    }
+}
+
+@media screen and (height < 550px) and (width < 920px) {
+
+    .containerProjects{
+        justify-content: flex-end;
+    }
+
+    .projects {
+        gap: 0;
+        padding: 10px 0;
+    }
+
+    .contLinks li a{
+        font-size: .625rem;
+        padding: 0;
+    }
+    
+    .btn {
+        font-size: 3rem;
+    }
+}
+
+@media screen and (width < 950px) and (height > 900px){
+    .card {
+        flex-direction: column;
+    }
+    
+    .card div {
+        height: 70%;
+        width: 100%;
+    }
+    
+    .card ul {
+        width: 100%;
+    }
+    
+    .btn{
+        font-size: 4rem;
+    }
+    
+    .contLinks li a{
+        font-size: 1.5rem;
+    }
+
+    .icon{
+        font-size: 2.5rem;
+    }
+}
