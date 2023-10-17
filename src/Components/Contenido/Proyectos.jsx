@@ -1,100 +1,77 @@
+// Estilos
 import styleProjects from '../../styles/Contenido/Proyectos.module.css'
 
-import portafolio from '../../assets/images/portafolio.png'
-import tateti from '../../assets/images/tateti.png'
-import misTareas from '../../assets/images/mis-tareas.png'
-
-import { IoMdArrowDropleftCircle, IoMdArrowDroprightCircle } from 'react-icons/io'
+// Iconos
+import { AiFillCaretRight, AiFillCaretLeft } from 'react-icons/ai'
 import { VscGithub } from 'react-icons/vsc'
 import { CgWebsite } from 'react-icons/cg'
 
-import { useEffect, useState } from 'react'
+// Hooks
+import { useRef } from 'react'
+import useMov from '../../hooks/useMov'
+import useCarousel from '../../hooks/useCarousel'
+
+// Utilidades
+import { dataProjects } from '../../util/dataProjects'
+import { turnBack, turnFront } from '../../util/fuctionsTurn'
+
 
 export default function Proyectos() {
 
-    const [project, setProject] = useState([
-        {img: portafolio, url: 'https://www.google.com', github: 'https://www.google.com'},
-        {img: tateti},
-        {img: misTareas}
-    ])
+    let carouselRef = useRef()
+    let boxCardRef = useRef([])
+    let cardRef = useRef([])
 
-    useEffect(() => {
-        const carousel = document.querySelector('.carousel')
-        const boxCard = document.querySelectorAll('.boxCard')
-        const lastBoxCard = boxCard[boxCard.length - 1]
-        carousel.insertAdjacentElement('afterbegin', lastBoxCard)
-    }, [])
+    const { leftMov, left, right } = useMov()
+    useCarousel(carouselRef, boxCardRef, cardRef, leftMov)
 
-    const left = () => {
-        const carousel = document.querySelector('.carousel')
-        const boxCard = document.querySelectorAll('.boxCard')
-        const lastBoxCard = boxCard[boxCard.length - 1]
+    return <section className={styleProjects.containerProjects} id='Proyectos'>
+        <section className={styleProjects.model}>
 
-        document.querySelector('.offButtons').style = 'pointer-events: none'
-        document.querySelector('.carousel').style = `margin-left: 0%; transition: margin-left .7s`
-        
-        setTimeout(() => {
-            carousel.insertAdjacentElement('afterbegin', lastBoxCard)
-            document.querySelector('.carousel').style = `margin-left: -100%;`
-            document.querySelector('.offButtons').style = 'pointer-events: inherit'
-        }, 700)
-        
-        
-    }
-    const right = () => {
-        const carousel = document.querySelector('.carousel')
-        const boxCard = document.querySelectorAll('.boxCard')
-        const firstBoxCard = boxCard[0]
-        
-        document.querySelector('.offButtons').style = 'pointer-events: none'
-        document.querySelector('.carousel').style = `margin-left: -200%; transition: margin-left .7s;`
-        
-        setTimeout(() => {
-            carousel.insertAdjacentElement('beforeend', firstBoxCard)
-            document.querySelector('.carousel').style = `margin-left: -100%;`
-            document.querySelector('.offButtons').style = 'pointer-events: inherit'
-        }, 700)
+            <section className={`${styleProjects.carousel}`} ref={carouselRef}>
+                {dataProjects.map((element, i) => {
+                    return <article key={i} className={styleProjects.boxCard} ref={e => boxCardRef.current[i] = e}>
+                        <article className={styleProjects.card} ref={e => cardRef.current[i] = e}>
 
-    }
-
-
-    return (
-        <section id="Proyectos" className={styleProjects.containerProjects}>
-            <section className={styleProjects.projects}>
-
-                <div className={`${styleProjects.carousel} ${'carousel'}`}>
-                    {project.map((p, i) => {
-                        return <div key={i} className={`${styleProjects.boxCard} ${'boxCard'}`}>
-                            <article className={`${styleProjects.card}`}>
+                            <article className={styleProjects.front}>
                                 <div className={styleProjects.contImg}>
-                                    <img loading='lazy' src={p.img} alt={`Proyecto Nro ${i + 1}`} />
+                                    <img loading='lazy' src={element.img} alt={element.name} />
                                 </div>
+
                                 <ul className={styleProjects.contLinks}>
                                     <li>
-                                        <a target='_blank'href={p.url ? p.url : '#'}>
-                                            <CgWebsite className={styleProjects.icon}/>
-                                            Página
-                                        </a>
+                                        <a target='_blank' className={styleProjects.link} title='Página' href={element.url}><CgWebsite /></a>
                                     </li>
-
                                     <li>
-                                        <a target='_blank' href={p.github ? p.github : '#'}>
-                                            <VscGithub className={styleProjects.icon}/>
-                                            GitHub
-                                        </a>
+                                        <a target='_blank' className={styleProjects.link} title='Repositorio' href={element.github}><VscGithub /></a>
                                     </li>
                                 </ul>
+                                <ul className={styleProjects.boxTurn}>
+                                    <li className={styleProjects.turn} onClick={turnFront}>Info</li>
+                                </ul>
                             </article>
-                        </div>
-                    })}
-                </div>
 
-                <ul className={`${styleProjects.containerBtn} ${'offButtons'}`}>
-                    <li className={styleProjects.btn} onClick={left}><IoMdArrowDropleftCircle /></li>
-                    <li className={styleProjects.btn} onClick={right}><IoMdArrowDroprightCircle /></li>
-                </ul>
+                            <article className={styleProjects.back}>
+                                <div className={styleProjects.boxDescript}>
+                                    <p className={styleProjects.descript}>
+                                        {element.descript}
+                                    </p>
+                                </div>
 
+                                <ul className={styleProjects.boxTurn}>
+                                    <li className={styleProjects.turn} onClick={turnBack}>Volver</li>
+                                </ul>
+                            </article>
+                        </article>
+                    </article>
+                })}
             </section>
+
+            <section className={styleProjects.containerBtn}>
+                <button className={styleProjects.btn} onClick={left}><AiFillCaretLeft /></button>
+                <button className={styleProjects.btn} onClick={right}><AiFillCaretRight /></button>
+            </section>
+
         </section>
-    )
+    </section>
 }

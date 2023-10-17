@@ -1,6 +1,6 @@
 @import url('../Variables/varDeColores.css');
 
-/* ==================== SCROLLBAR ESTILOS ========================== */
+/* ===== Scrollbar estilos ===== */
 html::-webkit-scrollbar {
     display: none;
 }
@@ -9,21 +9,14 @@ html {
     scrollbar-width: none;
 }
 
-/* ==================== CONTENEDOR PORTAFOLIO ========================== */
-.containerPortfolio {
-    background: linear-gradient(45deg, var(--base), var(--base2), var(--base3));
+/* ===== Estilos del contenedor ===== */
+.container__portfolio {
     display: flex;
 }
 
-/* ==================== MEDIA QUERIES ========================== */
-@media screen and (width < 920px) {
-    .containerPortfolio {
-        flex-flow: column nowrap;
-    }
-}
-
-@media screen and (width < 920px) and (height > 1000px) {
-    .containerPortfolio {
+/* ===== Media queries ===== */
+@media screen and (width < 1000px) {
+    .container__portfolio {
         flex-flow: column nowrap;
     }
 }

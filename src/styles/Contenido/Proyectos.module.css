@@ -1,109 +1,169 @@
-/* ====================== CONTENEDORES PROYECTOS ======================= */
+/* ===== Estilo del contenedor principal ===== */
 .containerProjects {
-    width: 90%;
-    height: 100vh;
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem;
-    overflow: hidden;
-}
-
-.projects {
-    background-color: var(--baseElementos);
+    background: var(--fondo);
     width: 100%;
-    height: 80%;
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
-
-    border-radius: .625rem;
-    overflow: hidden;
 }
 
-/* ====================== CARRUSEL ======================= */
+/* ===== Estilo del contenedor del carrusel y botones de movimiento ===== */
+.model {
+    width: 26rem;
+    height: 37.5rem;
+    margin: 5rem 0;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1rem;
+    border-radius: .625rem;
+}
+
+/* ===== Estilo del contenedor del carrusel y cards ===== */
 .carousel {
     position: relative;
-    width: 300%;
-    height: 80%;
+    height: 100%;
     display: flex;
     flex-flow: row nowrap;
     justify-content: center;
     align-self: flex-start;
-    margin-left: -100%;
+    transition: margin-left .5s ease-out;
 }
 
 .boxCard {
+    perspective: 1000px;
     width: 100%;
     display: flex;
     justify-content: center;
-    padding: .625rem;
+    padding: 1rem 2.5rem;
+    opacity: .3;
+    pointer-events: none;
+    transition: opacity .5s ease-out;
 }
 
 .card {
+    background-color: var(--baseElementos);
     width: 100%;
     display: flex;
     flex-flow: row nowrap;
     justify-content: center;
-    align-items: center;
-    border-radius: .3125rem;
-    overflow: hidden;
+    align-items: start;
+    border-radius: 1rem;
+    box-shadow: .3125rem .3125rem .3125rem var(--negro);
+
+    position: relative;
+    transform-style: preserve-3d;
+
+    transition: scale .5s ease-out, transform .5s ease-out;
 }
 
-/* --------------------------- IMAGEN  ---------------------- */
-.contImg {
-    flex-basis: 70%;
+
+/* ===== Estilos del frente y reves de cada tarjeta ===== */
+.front, .back {
+    width: 100%;
     height: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 1rem;
+    padding: 16px;
+    overflow: hidden;
+
+    position: absolute;
+    backface-visibility: hidden;
+    transform: rotateY(0deg);
+}
+
+.back {
+    transform: rotateY(180deg);
+}
+
+/* ===== Estilos del contenido de las cards ===== */
+.boxDescript {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.descript {
+    padding: .625rem;
+    text-align: justify;
+    font-family: var(--tipografia);
+}
+
+.contImg {
+    width: 100%;
+    max-height: 60%;
+    height: 60%;
     display: flex;
     justify-content: center;
     align-items: center;
 
-    border-radius: .3125rem;
+    border-radius: 1rem;
     overflow: hidden;
 }
 
 .contImg img {
-    border-radius: .3125rem;
+    height: 100%;
 }
 
-/* --------------------------- LINKS  ---------------------- */
 .contLinks {
-    flex-basis: 50%;
-    height: 100%;
+    width: 100%;
+    height: 20%;
     display: flex;
-    flex-flow: column nowrap;
+    flex-flow: row wrap;
     justify-content: space-evenly;
     align-items: center;
 }
 
-.contLinks li {
+.link {
+    width: 100%;
+    font-size: 1.8rem;
+    color: var(--blanco);
+    padding: 10px;
+    border-radius: 50%;
+    transition: background-color .2s ease-in, color .2s ease-in;
+}
+
+.link:hover {
+    background-color: var(--principal);
+    color: var(--negro);
+}
+
+.boxTurn {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.turn {
+    background-color: var(--negro);
+    color: var(--blanco);
     width: 50%;
-    outline: 2px solid var(--principal);
-    border-radius: .3125rem;
-    overflow: hidden;
-    transition: background-color .5s, outline .5s;
-}
-
-.contLinks li a {
+    display: flex;
+    justify-content: center;
     text-align: center;
-    font-size: 1rem;
-    padding: .625rem;
+    cursor: pointer;
+    font-size: 1.3rem;
     font-family: var(--tipografia);
-}
-.icon{
-    font-size: 2rem;
-    margin: 3px 0;
-}
-
-.contLinks li:hover {
-    background-color: var(--hover);
-    outline: 2px solid var(--baseElementos);
+    padding: .875rem;
+    border-radius: .625rem;
+    border: 2px solid var(--principal);
+    transition: scale .2s ease-in;
 }
 
-/* --------------------------- BOTONES  ---------------------- */
+.turn:hover {
+    scale: 1.1;
+}
+
+/* ===== Estilo de los botones de movimiento ===== */
 .containerBtn {
     width: 100%;
     display: flex;
@@ -112,83 +172,21 @@
 }
 
 .btn {
-    font-size: 3.5rem;
+    font-size: 3rem;
     color: var(--blanco);
     cursor: pointer;
-    border-radius: 50%;
-    outline: 2px solid var(--baseElementos);
-    transition: outline .5s;
+    transition: scale .2s, color .2s;
 }
 
-.btn:hover{
-    outline: 2px solid var(--principal)
+.btn:hover {
+    scale: 1.2;
+    color: var(--principal);
 }
 
-/* ====================== MEDIA QUERIES ======================= */
-@media screen and (width < 600px) {
-    .card {
-        flex-direction: column;
-    }
-    
-    .card div {
-        height: 70%;
-        width: 100%;
-    }
-    
-    .card ul {
-        width: 100%;
-    }
-
-    .contLinks li a{
-        font-size: .625rem;
-        padding: 0;
-    }
-}
-
-@media screen and (height < 550px) and (width < 920px) {
-
-    .containerProjects{
-        justify-content: flex-end;
-    }
-
-    .projects {
-        gap: 0;
-        padding: 10px 0;
-    }
-
-    .contLinks li a{
-        font-size: .625rem;
-        padding: 0;
-    }
-    
-    .btn {
-        font-size: 3rem;
-    }
-}
-
-@media screen and (width < 950px) and (height > 900px){
-    .card {
-        flex-direction: column;
-    }
-    
-    .card div {
-        height: 70%;
-        width: 100%;
-    }
-    
-    .card ul {
-        width: 100%;
-    }
-    
-    .btn{
-        font-size: 4rem;
-    }
-    
-    .contLinks li a{
-        font-size: 1.5rem;
-    }
-
-    .icon{
-        font-size: 2.5rem;
+/* ===== Media queries ===== */
+@media screen and (width < 500px) {
+    .model {
+        width: 25rem;
+        height: 37.5rem;
     }
 }

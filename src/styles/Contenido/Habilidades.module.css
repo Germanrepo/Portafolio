@@ -1,101 +1,103 @@
-/* ====================== CONTENEDORES HABILIDADES ======================= */
+/* ===== Estilos de los contenedores ===== */
 .containerSkills {
-    width: 90%;
-    height: 100vh;
+    background: var(--fondo);
+
+    width: 100%;
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
-    padding: 2rem;
-    overflow: hidden;
 }
 
 .skills {
-    background-color: var(--baseElementos);
     position: relative;
-    width: 100%;
-    height: 80%;
+    width: 80%;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
-    gap: .625rem;
-    padding: 1rem;
-
-    border-radius: .625rem;
-    /* border: 2px solid var(--principal); */
-    overflow: auto;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    gap: 1rem;
+    margin: 5rem 0;
 }
 
-/* ====================== OBSERVADOR ======================= */
+
+/* ===== Estilo de la etiqueta observadora ===== */
 .observer {
     position: absolute;
     bottom: 50%;
 }
 
-/* ====================== ICONOS ======================= */
-.icons {
-    background-color: var(--negro); 
-    /* background-color: #001;  */
-    width: 100%;
-    display: flex;
-    position: relative;
-    flex-flow: row nowrap;
-    justify-content: center;
-    align-items: center;
-    justify-self: center;
-    
-    font-size: 4rem;
-    translate: 0 -900%;
-    border-radius: .625rem;
-    outline: 2px solid var(--baseElementos);
-    transition: translate 1s, box-shadow 1s 1s, transform .5s, outline 1s 1s;
+/* ====== Darle estilos a los iconos ======= */
+.icon {
+    background-color: var(--baseElementos);
+    padding: 20px;
+    border-radius: 1rem;
+    font-size: 8rem;
+    opacity: 0;
+    box-shadow: .3125rem .3125rem .3125rem var(--negro);
 }
 
-.icons:hover{
-    z-index: 1;
-    transform: scale(1.03);
+.icon:nth-child(1) {
+    color: #f51;
+    transition: opacity .3s;
 }
 
-.icon1 {color: #f51;}
-.icon2 {color: #07e;}
-.icon3 {color: #ff0;}
-.icon4 {color: #1ff;}
-.icon5 {color: #0d1;}
-.icon6 {color: #fa0;}
-.icon7 {color: #90c;}
+.icon:nth-child(2) {
+    color: #07e;
+    transition: opacity .3s .1s;
+}
 
-/* ====================== CLASES ANIMACION ======================= */
+.icon:nth-child(3) {
+    color: #ff0;
+    transition: opacity .3s .2s;
+}
 
-.tranlateElement1 { translate: 0 0; outline: 2px solid #f51;}
+.icon:nth-child(4) {
+    color: #1ff;
+    transition: opacity .3s .1s;
+}
 
-.tranlateElement2 { translate: 0 0; outline: 2px solid #07e;}
+.icon:nth-child(5) {
+    color: #0d1;
+    transition: opacity .3s .2s;
+}
 
-.tranlateElement3 { translate: 0 0; outline: 2px solid #ff0;}
+.icon:nth-child(6) {
+    color: #ccc;
+    transition: opacity .3s .3s;
+}
 
-.tranlateElement4 { translate: 0 0; outline: 2px solid #1ff;}
+.icon:nth-child(7) {
+    color: #fa0;
+    transition: opacity .3s .2s;
+}
 
-.tranlateElement5 { translate: 0 0; outline: 2px solid #0d1;}
+.icon:nth-child(8) {
+    color: #90c;
+    transition: opacity .3s .3s;
+}
 
-.tranlateElement6 { translate: 0 0; outline: 2px solid #fa0;}
+/* ===== Estilo que revela los iconos ==== */
+.show {
+    opacity: 1;
+}
 
-.tranlateElement7 { translate: 0 0; outline: 2px solid #90c;}
+/* ===== Media queries ===== */
+@media screen and (width < 550px) {
+    .skills {
+        width: 90%;
+    }
 
-/* ====================== MEDIA QUERIES ======================= */
-@media screen and (height < 550px) and (width < 920px) {
-
-    .containerSkills{
-        justify-content: flex-end;
+    .icon {
+        font-size: 5rem;
     }
 }
 
-@media screen and (width < 800px), (height < 500px){
-    .icons{
-        font-size: 3rem;
+@media screen and (height < 550px) {
+    .skills {
+        width: 70%;
+    }
+
+    .icon {
+        font-size: 4rem;
     }
 }
-
-@media screen and (height > 1000px) {
-    .icons{
-        font-size: 4.5rem;
-    }
-}
-

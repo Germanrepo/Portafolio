@@ -1,21 +1,25 @@
+// Libreria para la transicion
 import { motion } from "framer-motion";
 
-const animationConfiguration = {
-    initial: { opacity: 0, clipPath: 'inset(0 50% 0 50%)' },
-    animate: { opacity: 1, clipPath: 'inset(0 0 0 0)' },
-    exit: { opacity: 0, clipPath: 'inset(0 50% 0 50%)' },
-}
+// Estilos
+import '../../styles/Portafolio/Portafolio.css'
+
+// Hook
+import { useState } from "react";
 
 export default function Transition({ children }) {
-    return (
-        <motion.div
-            variants={animationConfiguration}
-            initial="initial"
-            animate="animate"
-            exit="exit"
-            transition={{ duration: 1}}
-        >
-            {children}
-        </motion.div>
-    )
+    const [animationConfiguration] = useState({
+        initial: { opacity: 0, },
+        animate: { opacity: 1, },
+        exit: { opacity: 0, },
+    })
+    return <motion.section className='container__portfolio'
+        variants={animationConfiguration}
+        initial="initial"
+        animate="animate"
+        exit="exit"
+        transition={{ duration: .5 }}
+    >
+        {children}
+    </motion.section>
 }

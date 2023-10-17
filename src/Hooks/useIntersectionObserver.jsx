@@ -1,5 +1,5 @@
+// Hook
 import { useState, useRef, useEffect } from "react"
-
 
 export default function useIntersectionObserver(options = {}) {
     const [intersecting, setIntersecting] = useState(false)
@@ -10,10 +10,8 @@ export default function useIntersectionObserver(options = {}) {
 
         const observer = new IntersectionObserver((entry) => {
 
-            entry.forEach(e => {                
-                if(e.isIntersecting){
-                    setIntersecting(true)
-                }
+            entry.forEach(e => {
+                setIntersecting(e.isIntersecting)
             })
         }, options)
 

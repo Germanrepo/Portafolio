@@ -1,191 +1,164 @@
 /* ============================ CONTENEDOR NAVEGACION =========================== */
-
-.container {
+.header {
     height: 100vh;
     display: flex;
-    flex-flow: column nowrap;
-    justify-content: space-evenly;
-    align-items: flex-start;
-    padding: .625rem;
-    gap: .3125rem;
-
-
+    z-index: 100;
     position: sticky;
     top: 0;
 }
 
-/* ============================ BOTON NAVEXPAND =========================== */
-
-.btn {
-    width: 3.125rem;
-    height: 3.125rem;
-    border-radius: 50%;
-    color: var(--principal);
-
-    font-size: 2rem;
-    cursor: pointer;
-    outline: 2px solid var(--base2);
-    transition: color .5s, outline .5s;
+.container {
+    position: relative;
 }
 
-.btn:hover {
-    color: var(--blanco);
-    outline: 2px solid var(--principal);
+/* ===== Boton revelador del menu ====== */
+.bar {
+    display: none;
+    opacity: .6;
+    justify-content: center;
+    align-items: center;
+    color: var(--principal);
+    font-size: 2.3rem;
+    padding: .3125rem;
+    cursor: pointer;
+    transition: color .2s ease-out, background-color .2s ease-out, opacity .2s ease-out;
+}
+
+.bar:hover {
+    opacity: 1;
 }
 
 /* ============================ NAVEGACION =========================== */
-.containerNav {
+.nav {
+    background-color: #014;
+    width: 100%;
+    height: 100%;
+    padding: 0 0 0 .3125rem;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    position: relative;
+}
+
+.boxLink {
+    background-color: var(--baseElementos);
+    border-radius: 1rem;
+    box-shadow: .3125rem .3125rem .3125rem var(--negro);
     width: 100%;
     height: 90%;
     display: flex;
-    flex-flow: row nowrap;
-    position: relative;
+    flex-flow: column nowrap;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
-/* --------------------------- NAVEXPAND -----------------------*/
-.navExpand {
+.link {
+    border-radius: 50% 0 50% 50%;
+    padding: .3125rem;
+    font-size: 2.3rem;
+    position: relative;
+    border-radius: 50% 0 50% 50%;
+    color: var(--principal);
+    transition: color .2s ease-out, scale .2s ease-out, background-color .2s ease-out;
+}
+
+
+.link:hover {
+    color: var(--negro);
+    background-color: var(--principal);
+}
+
+.link:active {
+    scale: .9;
+}
+
+.linkName {
     background-color: var(--baseElementos);
+    text-align: center;
     width: 0;
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: center;
-    align-items: center;
-
+    border-radius: 0 1rem 1rem 0;
     overflow: hidden;
-    border-radius: .3125rem 0 0 .3125rem;
-    transition: width 1s, margin-right 1s;
-}
-
-.navItems {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: space-evenly;
-    align-items: center;
-    color: var(--principal);
-    font-size: 1.1rem;
-    font-family: var(--tipografia);
-    white-space: nowrap;
-}
-
-.navItems li {
-    transition: color .4s;
-}
-
-.navItems li:hover {
-    color: var(--blanco);
-}
-
-.expandReveal {
-    width: 8.75rem;
-    margin-right: .625rem;
-}
-
-/* ------------------------ NAVICONS ------------------------ */
-.navIcons {
-    width: 3rem;
-    position: relative;
-    display: flex;
-    justify-content: center;
-}
-
-.icons {
-    background-color: var(--baseElementos);
-    width: 100%;
-    height: 100%;
-    display: flex;
-    border-radius: 0 .3125rem .3125rem 0;
-
-    flex-flow: column nowrap;
-    justify-content: space-evenly;
-    align-items: center;
-}
-
-.icons li {
-    font-size: 1.8rem;
-    position: relative;
-    color: var(--principal);
-    transition: color .4s, transform .4s;
-}
-
-.descript {
-    display: none;
     position: absolute;
-    font-size: 1.3rem;
+    font-size: 1.4rem;
+    color: var(--baseElementos);
     font-family: var(--tipografia);
-    bottom: -1.25rem;
-    color: var(--blanco);
-    transition: opacity .5s;
+    top: 0;
+    left: 100%;
+    white-space: nowrap;
+    pointer-events: none;
+    transition: left .2s ease-out, width .2s ease-out, background-color .2s ease-out;
 }
 
-.icons li:hover {
-    color: var(--blanco);
-    transform: scale(1.2);
-}
-
-.icons li:active {
-    transform: scale(1);
+.link:hover>.linkName {
+    background-color: var(--principal);
+    color: var(--negro);
+    width: 12ch;
 }
 
 /* ===================== MEDIA QUERIES ======================== */
-@media screen and (width < 920px),
-(height > 1000px) {
+@media screen and (width < 1000px) {
+    .header {
+        position: fixed;
+        width: 100%;
+        height: auto;
+        transition: top .2s;
+    }
+
     .container {
         width: 100%;
-        height: auto;
-        flex-flow: row nowrap;
-        align-items: center;
-        justify-content: center;
-        position: sticky;
-        top: 0;
-        z-index: 100;
+        display: flex;
+    }
+
+    .bar {
+        display: flex;
+    }
+
+    .nav {
+        background-color: transparent;
+        translate: 0 -47px;
         padding: 0;
-        gap: 0;
+        overflow: hidden;
+        transition: translate .3s ease-out;
     }
 
-    .containerBtn {
-        display: none;
+    .navReveal {
+        translate: 0;
     }
 
-    .containerNav {
-        height: 3.125rem;
-        flex-flow: column nowrap;
-    }
-
-    .navExpand {
-        display: none;
-
-    }
-
-    .navIcons {
-        width: 100%;
-        padding: .625rem;
-    }
-
-    .icons {
+    .boxLink {
         flex-flow: row nowrap;
-        border-radius: .625rem;
-        padding: .4375rem;
-        height: auto;
+        height: 100%;
+        border-radius: .3125rem 0 0 .3125rem;
+        padding: .3125rem;
+        box-shadow: none;
     }
 
-    .descript {
-        display: block;
-    }
-}
-
-@media screen and (height > 1000px) {
-    .icons li {
-        font-size: 3rem;
-    }
-
-    .containerNav {
-        height: 4rem;
+    .link {
+        background-color: transparent;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        border-radius: .3125rem;
+        padding: 0;
+        overflow: hidden;
+        transition: background-color .3s ease-out, color .3s ease-out;
     }
 
-    .descript {
-        font-size: 2rem;
-        bottom: -1.5625rem;
+    .linkIcon {
+        position: relative;
+        transition: width .2s;
     }
+
+    .linkName {
+        border-radius: 0;
+        position: relative;
+        left: auto;
+        top: auto;
+        transition: width .3s ease-out, background-color .3s ease-out;
+    }
+
+    .link:hover>.linkIcon {
+        width: 20%;
+    }
+
 }
