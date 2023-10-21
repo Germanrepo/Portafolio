@@ -9,7 +9,7 @@ import { CgWebsite } from 'react-icons/cg'
 // Hooks
 import { useRef } from 'react'
 import useMov from '../../Hooks/useMov'
-import useCarousel from '../../hooks/useCarousel.jsx'
+import useCarousel from '../../Hooks/useCarousel.jsx'
 
 // Utilidades
 import { dataProjects } from '../../util/dataProjects'
