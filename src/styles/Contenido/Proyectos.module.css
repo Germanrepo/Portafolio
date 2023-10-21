@@ -93,6 +93,8 @@
 .descript {
     padding: .625rem;
     text-align: justify;
+    color: var(--blanco);
+    hyphens: none;
     font-family: var(--tipografia);
 }
 

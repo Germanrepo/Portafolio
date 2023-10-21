@@ -23,13 +23,6 @@ body{
   --tipo-secundaria: Verdana;
 }
 
-/* Las adaptamos al modo oscuro */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --primary: #eee;
-    --secondary: #009;
-  }
-}
 /* Opcional */
 /* Configuramos si un usuario ha activado el modo alto contraste. (WD) */
 /* Opcional */
