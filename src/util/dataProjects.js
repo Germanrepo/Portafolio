@@ -6,7 +6,7 @@ export const dataProjects = [
     {
         name: 'Portafolio',
         img: portafolio,
-        url: 'https://www.google.com',
+        url: 'https://www.centudev.com/',
         github: 'https://github.com/Germanrepo/Portafolio.git',
         descript: 'Creado con ReactJS y estilizado con CSS puro, React Icons y Framer Motion. Como se puede notar, el diseño es bastante mediocre, ya que lo fui diseñando y programando sobre la marcha debido a que quería desplegarlo lo antes posible, pero es por seguro de que lo iré mejorando con el tiempo.'
     },
