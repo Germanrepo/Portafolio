@@ -8,7 +8,7 @@ import { CgWebsite } from 'react-icons/cg'
 
 // Hooks
 import { useRef } from 'react'
-import useMov from '../../hooks/useMov.jsx'
+import useMov from '../../Hooks/useMov'
 import useCarousel from '../../hooks/useCarousel.jsx'
 
 // Utilidades
